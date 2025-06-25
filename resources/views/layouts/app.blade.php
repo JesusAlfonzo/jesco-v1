@@ -46,6 +46,7 @@
                     <li><a class="dropdown-item" href="#">Laboratorio</a></li>
                     <li><a class="dropdown-item" href="#">Pacientes</a></li>
                     <li><a class="dropdown-item" href="#">Reportes</a></li>
+                    <li><a class="dropdown-item" href="#">Roles</a></li>
                 </ul>
                 </li>
 
