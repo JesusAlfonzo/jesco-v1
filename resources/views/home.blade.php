@@ -7,7 +7,7 @@
 
                 @if (auth()->user())
                     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.7.2/font/bootstrap-icons.css">
-                    <div class="container py-5">
+                    <div class="container py-5 w-auto">
                         <div class="row row-cols-1 row-cols-md-4 g-4">
                             <div class="col">
                                 <div class="card h-100 text-center shadow">
