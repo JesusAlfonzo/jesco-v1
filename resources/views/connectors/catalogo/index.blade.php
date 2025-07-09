@@ -47,7 +47,7 @@
                         <x-card title="Modulo: Empleados" cardClass="border-primary h-100">
                             <p>Registra y gestiona la información de los empleados de la organización.</p>
                             <x-slot name="button">
-                                <a href="#" class="btn btn-success">Entrar</a>
+                                <a href="{{ route('empleados.index') }}" class="btn btn-success">Entrar</a>
                             </x-slot>
                         </x-card>
                     </div>
@@ -71,7 +71,7 @@
                             </x-slot>
                         </x-card>
                     </div>
-                    
+
                     {{-- Tarjeta: Impuestos --}}
                     <div class="col-md-6 mb-4">
                         <x-card title="Modulo: Impuestos" cardClass="border-primary h-100">
