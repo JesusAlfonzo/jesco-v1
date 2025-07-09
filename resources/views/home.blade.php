@@ -15,7 +15,7 @@
                                         <div class="display-4 text-primary mb-2">
                                             <i class="bi bi-people"></i>
                                         </div>
-                                        <h2 class="card-title mb-3">{{auth()->user()->count()}}</h2>
+                                        <h2 class="card-title mb-3">{{ auth()->user()->count() }}</h2>
                                         <p class="card-text text-muted">Empleados Registrados</p>
                                     </div>
                                 </div>
