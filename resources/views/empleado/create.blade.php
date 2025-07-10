@@ -10,9 +10,10 @@
             <div class="col-md-8 col-lg-7">
 
                 <div class="card card-default">
-                    <div class="card-header">
-                        <span class="card-title">Crear Empleado</span>
+                    <div class="card-header" style="background: linear-gradient(to right, #4e73df, #224abe); color: white;">
+                        <span class="card-title float">Crear Empleado</span>
                     </div>
+                    
                     <div class="card-body bg-white">
                         <form method="POST" action="{{ route('empleados.store') }}"  role="form" enctype="multipart/form-data">
                             @csrf

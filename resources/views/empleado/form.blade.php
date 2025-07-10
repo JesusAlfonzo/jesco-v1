@@ -13,7 +13,7 @@
         <div class="form-group mb-3">
             <label for="departamento_id" class="form-label">Departamento</label>
             <select name="departamento_id" id="departamento_id" class="form-control @error('departamento_id') is-invalid @enderror">
-                <option value="">Seleccione un departamento</option>
+                <option value="">Seleccione un departamento</option> 
                 @foreach($departamentos as $departamento)
                     <option value="{{ $departamento->id }}" {{ old('departamento_id', $empleado?->departamento_id) == $departamento->id ? 'selected' : '' }}>
                         {{ $departamento->nombre }}
@@ -29,7 +29,13 @@
         </div>
         <div class="form-group mb-3">
             <label for="estado" class="form-label">Estado</label>
-            <input type="text" name="estado" class="form-control @error('estado') is-invalid @enderror" value="{{ old('estado', $empleado?->estado) }}" id="estado" placeholder="Ingrese el estado">
+            <select name="estado" id="estado" class="form-control @error('estado') is-invalid @enderror">
+                <option value="">Seleccione el estado</option>
+                <option value="activo" {{ old('estado', $empleado?->estado) == 'activo' ? 'selected' : '' }}>Activo</option>
+                <option value="inactivo" {{ old('estado', $empleado?->estado) == 'inactivo' ? 'selected' : '' }}>Inactivo</option>
+                <option value="reposo" {{ old('estado', $empleado?->estado) == 'reposo' ? 'selected' : '' }}>Reposo</option>
+                <option value="jubilado" {{ old('estado', $empleado?->estado) == 'jubilado' ? 'selected' : '' }}>Jubilado</option>
+            </select>
             {!! $errors->first('estado', '<div class="invalid-feedback" role="alert"><strong>:message</strong></div>') !!}
         </div>
         <div class="form-group mb-3">
@@ -40,5 +46,7 @@
         <div class="text-center mt-4">
             <button type="submit" class="btn btn-primary">Guardar</button>
         </div>
+        
+        
     </div>
 </div>
