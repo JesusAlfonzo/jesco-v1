@@ -91,11 +91,11 @@
                                             </td>
                                             <td class="action-buttons">
                                                 <a href="{{ route('empleados.show', $empleado->id) }}"
-                                                    class="btn btn-sm btn-primary" title="Ver">
+                                                    class="btn btn-sm btn-primary me-1 mb-1" title="Ver">
                                                     <i class="fas fa-eye">Mostrar</i>
                                                 </a>
                                                 <a href="{{ route('empleados.edit', $empleado->id) }}"
-                                                    class="btn btn-sm btn-success" title="Editar">
+                                                    class="btn btn-sm btn-success me-1 mb-1" title="Editar">
                                                     <i class="fas fa-edit">Editar</i>
                                                 </a>
                                                 <form action="{{ route('empleados.destroy', $empleado->id) }}"

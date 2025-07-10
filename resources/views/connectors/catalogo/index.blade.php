@@ -37,7 +37,7 @@
                         <x-card title="Modulo: Departamentos" cardClass="border-primary h-100">
                             <p>Permite crear y administrar los departamentos que conforman la empresa.</p>
                             <x-slot name="button">
-                                <a href="#" class="btn btn-success">Entrar</a>
+                                <a href="{{ route('departamentos.index') }}" class="btn btn-success">Entrar</a>
                             </x-slot>
                         </x-card>
                     </div>

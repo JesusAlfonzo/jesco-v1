@@ -1,17 +1,19 @@
 @extends('layouts.app')
 
 @section('template_title')
-    {{ __('Update') }} Departamento
+    Actualizar Departamento
 @endsection
 
 @section('content')
     <section class="content container-fluid">
-        <div class="">
-            <div class="col-md-12">
-
+        <div class="row justify-content-center">
+            <div class="col-md-8 col-lg-7">
                 <div class="card card-default">
-                    <div class="card-header">
-                        <span class="card-title">{{ __('Update') }} Departamento</span>
+                    <div class="card-header d-flex justify-content-between align-items-center" style="background: linear-gradient(to right, #4e73df, #224abe); color: white;">
+                        <span class="card-title" style="font-size: 1.25rem;">Actualizar Departamento</span>
+                        <a href="{{ route('departamentos.index') }}" class="btn btn-outline-light btn-sm">
+                            <i class="fas fa-arrow-left me-1"></i> Volver
+                        </a>
                     </div>
                     <div class="card-body bg-white">
                         <form method="POST" action="{{ route('departamentos.update', $departamento->id) }}"  role="form" enctype="multipart/form-data">

@@ -11,26 +11,36 @@ use Illuminate\View\View;
 
 class DepartamentoController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     */
-    public function index(Request $request): View
-    {
-        $departamentos = Departamento::paginate();
+/**
+ * Display a listing of the resource.
+ */
+public function index(Request $request)
+{
+    $query = Departamento::query();
 
-        return view('departamento.index', compact('departamentos'))
-            ->with('i', ($request->input('page', 1) - 1) * $departamentos->perPage());
+    if ($request->filled('search')) {
+        $search = $request->input('search');
+        $query->where(function($q) use($search) {
+            $q->where('nombre', 'like', "%{$search}%")
+                ->orWhere('descripcion', 'like', "%{$search}%");
+        });
     }
+
+    $departamentos = $query->paginate(10); // Eliminado el with('Departamento')
+
+    return view('departamento.index', compact('departamentos')) // Corregido el nombre de la variable
+        ->with('i', ($request->input('page', 1) - 1) * $departamentos->perPage());
+}
 
     /**
      * Show the form for creating a new resource.
      */
-    public function create(): View
-    {
-        $departamento = new Departamento();
 
-        return view('departamento.create', compact('departamento'));
-    }
+public function create(): View
+{
+    $departamento = new Departamento();
+    return view('departamento.create', compact('departamento'));
+}
 
     /**
      * Store a newly created resource in storage.
@@ -40,7 +50,7 @@ class DepartamentoController extends Controller
         Departamento::create($request->validated());
 
         return Redirect::route('departamentos.index')
-            ->with('success', 'Departamento created successfully.');
+            ->with('success', 'El departamento ha sido creado exitosamente.');
     }
 
     /**
@@ -71,7 +81,7 @@ class DepartamentoController extends Controller
         $departamento->update($request->validated());
 
         return Redirect::route('departamentos.index')
-            ->with('success', 'Departamento updated successfully');
+            ->with('success', 'El departamento ha sido actualizado exitosamente.');
     }
 
     public function destroy($id): RedirectResponse
@@ -79,6 +89,6 @@ class DepartamentoController extends Controller
         Departamento::find($id)->delete();
 
         return Redirect::route('departamentos.index')
-            ->with('success', 'Departamento deleted successfully');
+            ->with('success', 'El departamento ha sido eliminado exitosamente.');
     }
 }

@@ -1,73 +1,41 @@
 @extends('layouts.app')
 
 @section('template_title')
-    Departamentos
+    Crear Departamento
 @endsection
 
 @section('content')
-    <div class="container-fluid">
-        <div class="row">
-            <div class="col-sm-12">
-                <div class="card">
-                    <div class="card-header">
-                        <div style="display: flex; justify-content: space-between; align-items: center;">
-
-                            <span id="card_title">
-                                {{ __('Departamentos') }}
-                            </span>
-
-                             <div class="float-right">
-                                <a href="{{ route('departamentos.create') }}" class="btn btn-primary btn-sm float-right"  data-placement="left">
-                                  {{ __('Create New') }}
-                                </a>
-                              </div>
-                        </div>
+    <!-- Sección principal del contenido -->
+    <section class="content container-fluid">
+        <div class="row justify-content-center">
+            <div class="col-md-8 col-lg-7">
+                <!-- Tarjeta principal -->
+                <div class="card card-default">
+                    <!-- Header de la tarjeta: Título y botón Volver -->
+                    <div class="card-header d-flex justify-content-between align-items-center"
+                        style="background: linear-gradient(to right, #4e73df, #224abe); color: white; min-height: 56px;">
+                        <span class="card-title" style="font-size: 1.25rem; line-height: 1.5;">Crear Departamento</span>
+                        <a href="{{ route('departamentos.index') }}"
+                            class="btn btn-outline-light btn-sm d-flex align-items-center" style="height: 38px;">
+                            <i class="fas fa-arrow-left me-1"></i> Volver
+                        </a>
                     </div>
-                    @if ($message = Session::get('success'))
-                        <div class="alert alert-success m-4">
-                            <p>{{ $message }}</p>
-                        </div>
-                    @endif
-
+                    <!-- Cuerpo de la tarjeta: Formulario -->
                     <div class="card-body bg-white">
-                        <div class="table-responsive">
-                            <table class="table table-striped table-hover">
-                                <thead class="thead">
-                                    <tr>
-                                        <th>No</th>
-                                        
-									<th >Nombre</th>
-									<th >Descripcion</th>
+                        <form method="POST" action="{{ route('departamentos.store') }}" role="form"
+                            enctype="multipart/form-data">
+                            @csrf
 
-                                        <th></th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    @foreach ($departamentos as $departamento)
-                                        <tr>
-                                            <td>{{ ++$i }}</td>
-                                            
-										<td >{{ $departamento->nombre }}</td>
-										<td >{{ $departamento->descripcion }}</td>
+                            <!-- Inclusión del formulario reutilizable de departamento -->
+                            @include('departamento.form')
 
-                                            <td>
-                                                <form action="{{ route('departamentos.destroy', $departamento->id) }}" method="POST">
-                                                    <a class="btn btn-sm btn-primary " href="{{ route('departamentos.show', $departamento->id) }}"><i class="fa fa-fw fa-eye"></i> {{ __('Show') }}</a>
-                                                    <a class="btn btn-sm btn-success" href="{{ route('departamentos.edit', $departamento->id) }}"><i class="fa fa-fw fa-edit"></i> {{ __('Edit') }}</a>
-                                                    @csrf
-                                                    @method('DELETE')
-                                                    <button type="submit" class="btn btn-danger btn-sm" onclick="event.preventDefault(); confirm('Are you sure to delete?') ? this.closest('form').submit() : false;"><i class="fa fa-fw fa-trash"></i> {{ __('Delete') }}</button>
-                                                </form>
-                                            </td>
-                                        </tr>
-                                    @endforeach
-                                </tbody>
-                            </table>
-                        </div>
+                        </form>
                     </div>
+                    <!-- Fin del cuerpo de la tarjeta -->
                 </div>
-                {!! $departamentos->withQueryString()->links() !!}
+                <!-- Fin de la tarjeta principal -->
             </div>
         </div>
-    </div>
+    </section>
+    <!-- Fin de la sección principal del contenido -->
 @endsection

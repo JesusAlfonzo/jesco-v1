@@ -16,6 +16,7 @@ Auth::routes();
 
 Route::get('/home', [HomeController::class, 'index'])->middleware(['auth', 'role:admin'])->name('home');
 
+// Rutas de Recursos Crud
 Route::resource('empleados', EmpleadoController::class);
 Route::resource('departamentos', DepartamentoController::class);
 
