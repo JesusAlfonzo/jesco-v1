@@ -14,9 +14,11 @@ return new class extends Migration
         Schema::create('monedas', function (Blueprint $table) {
             $table->id();
             $table->string('nombre');
-            $table->string('codigo', 3);
+            $table->string('codigo');
+            $table->string('simbolo')->nullable(); // Nuevo campo para el símbolo
+            $table->string('pais')->nullable();    // Nuevo campo para el país
             $table->timestamps();
-        });
+        }); 
     }
     /**
      * Reverse the migrations.

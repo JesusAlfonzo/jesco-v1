@@ -21,14 +21,16 @@ public function index(Request $request)
     if ($request->filled('search')) {
         $search = $request->input('search');
         $query->where(function($q) use($search) {
-            $q->where('nombre', 'like', "%{$search}%")
-                ->orWhere('descripcion', 'like', "%{$search}%");
+            // Buscar por ID parcial, nombre y descripción
+            $q->where('id', 'like', "%{$search}%")
+              ->orWhere('nombre', 'like', "%{$search}%")
+              ->orWhere('descripcion', 'like', "%{$search}%");
         });
     }
 
-    $departamentos = $query->paginate(10); // Eliminado el with('Departamento')
+    $departamentos = $query->paginate(10);
 
-    return view('departamento.index', compact('departamentos')) // Corregido el nombre de la variable
+    return view('departamento.index', compact('departamentos'))
         ->with('i', ($request->input('page', 1) - 1) * $departamentos->perPage());
 }
 

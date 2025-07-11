@@ -44,7 +44,7 @@
                                     Modulos
                                 </a>
                                 <ul class="dropdown-menu">
-                                    <li><a class="dropdown-item" href="#">Compras</a></li>
+                                    <li><a class="dropdown-item" href="{{ route('connectors.compras.index') }}">Compras</a></li>
                                     <li><a class="dropdown-item" href="#">Almacen</a></li>
                                     <li><a class="dropdown-item" href="#">Productos</a></li>
                                     <li><a class="dropdown-item" href="#">Empleados</a></li>
@@ -52,13 +52,14 @@
                                     <li><a class="dropdown-item" href="#">Laboratorio</a></li>
                                     <li><a class="dropdown-item" href="#">Pacientes</a></li>
                                     <li><a class="dropdown-item" href="#">Reportes</a></li>
-                                    <li><a class="dropdown-item" href="{{ route('connectors.catalogo.index') }}">Catalogos</a></li>
+                                    <li><a class="dropdown-item" href="{{ route('connectors.catalogo.index') }}">Catalogos</a>
+                                    </li>
                                 </ul>
                             </li>
 
-                            <form class="d-flex" role="search">
-                                <input class="form-control me-2" type="search" placeholder="Search"
-                                    aria-label="Search" />
+                            <form class="d-flex" role="search" id="navbar-search-form" onsubmit="return buscarModulo(event)">
+                                <input class="form-control me-2" type="search" placeholder="Buscar módulo..."
+                                    aria-label="Search" id="navbar-search-input" />
                                 <button class="btn btn-outline-success" type="submit">Buscar</button>
                             </form>
                 @endif
@@ -105,6 +106,34 @@
         @yield('content')
     </main>
     </div>
+
+    <script>
+        function buscarModulo(event) {
+            event.preventDefault();
+            const valor = document.getElementById('navbar-search-input').value.trim().toLowerCase();
+
+            // Diccionario de rutas por nombre de módulo
+            const rutas = {
+                'empleados': "{{ route('empleados.index') }}",
+                'departamentos': "{{ route('departamentos.index') }}",
+                'monedas': "{{ route('monedas.index') }}",
+                'compras': "{{ route('connectors.compras.index') }}", // Cambia por la ruta real
+                'almacen': "#",
+                'productos': "#",
+                'laboratorio': "#",
+                'pacientes': "#",
+                'reportes': "#",
+                'catalogo': "{{ route('connectors.catalogo.index') }}"
+            };
+
+            if (rutas[valor]) {
+                window.location.href = rutas[valor];
+            } else {
+                alert('No se encontró el módulo "' + valor + '".');
+            }
+            return false;
+        }
+    </script>
 </body>
 
 </html>
