@@ -6,20 +6,71 @@
             <div class="col-md-10">
 
                 @if (!auth()->check())
+                    <!-- Background blureado y overlay solo para usuarios no autenticados -->
+                    <div class="home-bg-blur"></div>
+                    <div class="home-bg-overlay"></div>
                     <!-- Página de bienvenida para usuarios sin acceso -->
-                    <div class="text-center py-5">
-                        <img src="{{ asset('images/logo.png') }}" alt="Logo Jesco" style="width:120px;">
-                        <h1 class="mt-4 mb-3">Bienvenido a Jesco</h1>
-                        <p class="lead mb-4">Sistema de gestión administrativa. Inicia sesión para acceder a tus módulos y funcionalidades.</p>
-                        <a href="{{ route('login') }}" class="btn btn-primary btn-lg">
-                            <i class="bi bi-box-arrow-in-right me-1"></i> Iniciar sesión
-                        </a>
+                    <div class="welcome-card position-relative mx-auto" style="z-index:2; max-width:500px;">
+                        <div class="text-center">
+                            <img src="{{ asset('logos/logo-tiny.svg') }}" alt="Logo Jesco" style="width:50px; margin-bottom: 1.2rem;">
+                            <h1 class="fw-bold mb-2" style="font-size:2.2rem; letter-spacing:1px;">Bienvenido a Jesco</h1>
+                            <h2 class="welcome-subtitle mb-3" style="font-size:1.15rem; color:#007bff; font-weight:500;">Tu gestión administrativa, más fácil y segura</h2>
+                            <p class="welcome-desc mb-2">Sistema de gestión administrativa moderno y eficiente.<br>Inicia sesión para acceder a tus módulos y funcionalidades.</p>
+                            <div class="row justify-content-center mb-3">
+                                <div class="col-4 px-1">
+                                    <div class="advantage-block py-2 px-1">
+                                        <i class="bi bi-shield-lock text-primary" style="font-size:1.3rem;"></i>
+                                        <div class="small mt-1">Tus datos siempre protegidos</div>
+                                    </div>
+                                </div>
+                                <div class="col-4 px-1">
+                                    <div class="advantage-block py-2 px-1">
+                                        <i class="bi bi-lightning-charge text-warning" style="font-size:1.3rem;"></i>
+                                        <div class="small mt-1">Acceso rápido y sin complicaciones</div>
+                                    </div>
+                                </div>
+                                <div class="col-4 px-1">
+                                    <div class="advantage-block py-2 px-1">
+                                        <i class="bi bi-person-check text-success" style="font-size:1.3rem;"></i>
+                                        <div class="small mt-1">Soporte para empleados IDI</div>
+                                    </div>
+                                </div>
+                            </div>
+                            <span class="idi-info d-block mb-2" style="font-size:0.95rem; color:#007bff; font-weight:500; margin-top:1.2rem; margin-bottom:0.5rem;">Si eres empleado del IDI inicia sesión</span>
+                            <div class="mb-2" style="font-size:0.95rem; color:#555;">
+                                <i class="bi bi-lock-fill me-1 text-secondary"></i>Tu acceso es privado y seguro
+                            </div>
+                            <a href="{{ route('login') }}" class="btn btn-primary btn-lg shadow-lg welcome-btn mt-1">
+                                <i class="bi bi-box-arrow-in-right me-1"></i> Iniciar sesión
+                            </a>
+                        </div>
+                        <hr class="my-4">
+                        <div class="row text-center g-3">
+                            <div class="col-4">
+                                <div class="feature-icon text-primary mb-2"><i class="bi bi-speedometer2" style="font-size:2rem;"></i></div>
+                                <div class="small">Rápido y seguro</div>
+                            </div>
+                            <div class="col-4">
+                                <div class="feature-icon text-success mb-2"><i class="bi bi-people" style="font-size:2rem;"></i></div>
+                                <div class="small">Gestión de empleados</div>
+                            </div>
+                            <div class="col-4">
+                                <div class="feature-icon text-warning mb-2"><i class="bi bi-building" style="font-size:2rem;"></i></div>
+                                <div class="small">Departamentos y áreas</div>
+                            </div>
+                        </div>
+                        <div class="mt-4 text-center d-flex justify-content-center align-items-center gap-2" style="gap:0.5rem; margin-top: 2rem;">
+                            <span class="badge bg-info text-dark px-3 py-2 shadow-sm">Versión 1.0 • Actualizado {{ date('Y') }}</span>
+                            <a href="https://github.com/JesusAlfonzo/jesco-v1" target="_blank" class="badge bg-dark text-white px-3 py-2 shadow-sm" style="text-decoration:none; display:inline-flex; align-items:center; gap:0.4em;">
+                                <i class="bi bi-github" style="font-size:1.2em;"></i> GitHub
+                            </a>
+                        </div>
                     </div>
                 @else
                     <!-- Dashboard para usuarios autenticados con rol -->
-                    <div class="mb-4">
-                        <h2 class="fw-bold">¡Hola, {{ auth()->user()->name }}!</h2>
-                        <p class="text-muted">Panel de administración y estado del sistema</p>
+                    <div class="mb-4" style="margin-top:0 !important; padding-top:0 !important;">
+                        <h2 class="fw-bold" style="margin:0 !important;">¡Hola, {{ auth()->user()->name }}!</h2>
+                        <p class="text-muted" style="margin-top:0 !important;">Panel de administración y estado del sistema</p>
                     </div>
                     <div class="row row-cols-1 row-cols-md-4 g-4 mb-4">
                         <!-- Tarjetas de estadísticas -->
@@ -95,3 +146,77 @@
         </div>
     </div>
 @endsection
+
+        @if (!auth()->check())
+        <style>
+            .home-bg-blur {
+                position: fixed;
+                top: 0;
+                left: 0;
+                width: 100vw;
+                height: 100vh;
+                background-image: url('{{ asset('background/background.jpg') }}');
+                background-size: cover;
+                background-position: center;
+                filter: blur(7px);
+                z-index: 0;
+            }
+            .home-bg-overlay {
+                position: fixed;
+                top: 0;
+                left: 0;
+                width: 100vw;
+                height: 100vh;
+                background: rgba(255,255,255,0.45);
+                z-index: 1;
+            }
+            .welcome-card {
+                background: rgba(255,255,255,0.95);
+                border-radius: 1.5rem;
+                box-shadow: 0 8px 32px rgba(0,0,0,0.18);
+                padding: 3.5rem 2rem 3rem 2rem;
+                margin-top: 7vh;
+                margin-bottom: 7vh;
+            }
+            .welcome-desc {
+                font-size: 1rem;
+                color: #444;
+                font-weight: 400;
+                line-height: 1.5;
+            }
+            .welcome-btn {
+                transition: all 0.2s;
+            }
+            .welcome-btn:hover {
+                transform: scale(1.07);
+                box-shadow: 0 4px 16px rgba(0,123,255,0.18);
+            }
+            .feature-icon {
+                transition: all 0.2s;
+            }
+            .feature-icon:hover {
+                transform: scale(1.2) rotate(-5deg);
+            }
+            .advantage-block {
+                background: rgba(245,245,255,0.7);
+                border-radius: 0.7rem;
+                box-shadow: 0 2px 8px rgba(0,0,0,0.07);
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                justify-content: center;
+                min-height: 70px;
+            }
+            .welcome-subtitle {
+                font-size: 1.15rem;
+                color: #007bff;
+                font-weight: 500;
+                margin-bottom: 0.7rem;
+            }
+            @media (max-width: 600px) {
+                .welcome-card { padding: 1.2rem 0.5rem; }
+                .welcome-card img { width: 120px !important; }
+            }
+        </style>
+        @endif
+

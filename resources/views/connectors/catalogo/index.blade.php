@@ -13,7 +13,7 @@
                 <a href="{{ route('departamentos.index') }}" class="text-decoration-none">
                     <div class="card h-100 shadow-sm">
                         <div class="card-body text-center">
-                            <i class="fas fa-building fa-2x text-primary mb-2"></i>
+                            <i class="bi bi-building text-primary mb-2" style="font-size:2.8rem;"></i>
                             <h5 class="card-title">Departamentos</h5>
                             <p class="card-text text-muted">Administra los departamentos de la empresa.</p>
                         </div>
@@ -25,7 +25,7 @@
                 <a href="{{ route('empleados.index') }}" class="text-decoration-none">
                     <div class="card h-100 shadow-sm">
                         <div class="card-body text-center">
-                            <i class="fas fa-users fa-2x text-success mb-2"></i>
+                            <i class="bi bi-people text-success mb-2" style="font-size:2.8rem;"></i>
                             <h5 class="card-title">Empleados</h5>
                             <p class="card-text text-muted">Gestión de empleados de la organización.</p>
                         </div>
@@ -37,7 +37,7 @@
                 <a href="{{ route('monedas.index') }}" class="text-decoration-none">
                     <div class="card h-100 shadow-sm">
                         <div class="card-body text-center">
-                            <i class="fas fa-coins fa-2x text-warning mb-2"></i>
+                            <i class="bi bi-currency-exchange text-warning mb-2" style="font-size:2.8rem;"></i>
                             <h5 class="card-title">Monedas</h5>
                             <p class="card-text text-muted">Configura las monedas del sistema.</p>
                         </div>
@@ -49,7 +49,7 @@
                 <a href="#" class="text-decoration-none">
                     <div class="card h-100 shadow-sm">
                         <div class="card-body text-center">
-                            <i class="fas fa-credit-card fa-2x text-info mb-2"></i>
+                            <i class="bi bi-credit-card text-info mb-2" style="font-size:2.8rem;"></i>
                             <h5 class="card-title">Métodos de Pago</h5>
                             <p class="card-text text-muted">Administra los métodos de pago disponibles.</p>
                         </div>
@@ -61,7 +61,7 @@
                 <a href="#" class="text-decoration-none">
                     <div class="card h-100 shadow-sm">
                         <div class="card-body text-center">
-                            <i class="fas fa-percentage fa-2x text-danger mb-2"></i>
+                            <i class="bi bi-percent text-danger mb-2" style="font-size:2.8rem;"></i>
                             <h5 class="card-title">Impuestos</h5>
                             <p class="card-text text-muted">Gestiona los tipos de impuestos del sistema.</p>
                         </div>

@@ -8,14 +8,14 @@
     <div class="container py-4">
         <h2 class="mb-4 fw-bold text-primary">Catálogo de Módulos</h2>
         <div class="row row-cols-1 row-cols-md-3 g-4">
-            <!-- Tarjeta: Departamentos -->
+            <!-- Tarjeta: Proveedores -->
             <div class="col">
-                <a href="{{ route('departamentos.index') }}" class="text-decoration-none">
+                <a href="{{ route('proveedores.index') }}" class="text-decoration-none">
                     <div class="card h-100 shadow-sm">
                         <div class="card-body text-center">
                             <i class="fas fa-building fa-2x text-primary mb-2"></i>
-                            <h5 class="card-title">Departamentos</h5>
-                            <p class="card-text text-muted">Administra los departamentos de la empresa.</p>
+                            <h5 class="card-title">Proveedores</h5>
+                            <p class="card-text text-muted">Administra los proveedores de la empresa.</p>
                         </div>
                     </div>
                 </a>
