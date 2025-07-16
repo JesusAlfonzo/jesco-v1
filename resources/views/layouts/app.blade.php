@@ -25,18 +25,19 @@
 <body>
     <div id="app">
         <!-- NAVBAR PRINCIPAL -->
-        <nav class="navbar navbar-expand-lg bd border @guest home-navbar-blur @endguest">
+        <nav class="navbar navbar-expand-lg navbar-light bg-light border @guest home-navbar-blur @endguest">
             <div class="container-fluid align-items-center d-flex">
                 <!-- Logo y Marca -->
                 @guest
-                <div class="w-100 d-flex justify-content-center">
-                    <a class="navbar-brand d-flex align-items-center" href="/">
-                        Jesco
-                        <img src="{{ asset('logos/logo-tiny.svg') }}" alt="Logo Jesco" style="width:28px; margin-left:8px;">
-                    </a>
-                </div>
+                    <div class="w-100 d-flex justify-content-center">
+                        <a class="navbar-brand d-flex align-items-center gap-2" href="/">
+                            Jesco
+                            <img src="{{ asset('logos/logo-tiny.svg') }}" alt="Logo Jesco"
+                                style="width:28px; margin-left:8px;">
+                        </a>
+                    </div>
                 @else
-                    <a class="navbar-brand d-flex align-items-center" href="/">
+                    <a class="navbar-brand d-flex align-items-center gap-2" href="/">
                         Jesco
                         <img src="{{ asset('logos/logo-tiny.svg') }}" alt="Logo Jesco" style="width:28px; margin-left:8px;">
                     </a>
@@ -47,32 +48,46 @@
                         data-bs-target="#navbarScroll" aria-controls="navbarScroll" aria-expanded="false"
                         aria-label="Toggle navigation">
                         <span class="navbar-toggler-icon"></span>
-                        <span class="navbar-toggler-icon"></span>
                     </button>
                 @endif
                 <!-- Contenido del navbar -->
                 <div class="collapse navbar-collapse" id="navbarScroll">
-                    <ul class="navbar-nav me-auto align-items-center navbar-nav-scroll" style="--bs-scroll-height: 100px;">
+                    <ul class="navbar-nav me-auto align-items-center navbar-nav-scroll gap-0"
+                        style="--bs-scroll-height: 100px;">
                         <!-- Menú principal para usuarios autenticados -->
                         @if (auth()->user())
-                            <li class="nav-item">
-                                <a class="nav-link active" aria-current="page" href="{{ url('home') }}">Inicio</a>
+                            <li class="nav-item me-0">
+                                <a class="nav-link active d-flex align-items-center gap-2" aria-current="page"
+                                    href="{{ url('home') }}">
+                                    <i class="bi bi-house-door-fill"></i> Inicio
+                                </a>
                             </li>
-                            <li class="nav-item dropdown">
-                                <a class="nav-link dropdown-toggle" href="#" role="button"
-                                    data-bs-toggle="dropdown" aria-expanded="false">
-                                    Modulos
+                            <li class="nav-item dropdown ms-0">
+                                <a class="nav-link dropdown-toggle d-flex align-items-center gap-2" href="#"
+                                    role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                    <i class="bi bi-grid-1x2-fill"></i> Modulos
                                 </a>
                                 <ul class="dropdown-menu align-items-center">
-                                    <li><a class="dropdown-item" href="{{ route('connectors.Administrativo.index') }}">Administrativo</a></li>
-                                    <li><a class="dropdown-item" href="{{ route('connectors.compras.index') }}">Compras</a></li>
-                                    <li><a class="dropdown-item" href="{{ route('connectors.Almacen.index') }}">Almacen</a></li>
-                                    <li><a class="dropdown-item" href="{{ route('connectors.Laboratorio.index') }}">Laboratorio</a></li>
-                                    <li><a class="dropdown-item" href="{{ route('connectors.Ajuste-Modulos.index') }}">Ajuste de Modulos</a></li>
+                                    <li><a class="dropdown-item d-flex align-items-center gap-1"
+                                            href="{{ route('connectors.Administrativo.index') }}"><i
+                                                class="bi bi-person-badge"></i> Administrativo</a></li>
+                                    <li><a class="dropdown-item d-flex align-items-center gap-1"
+                                            href="{{ route('connectors.Laboratorio.index') }}"><i
+                                                class="bi bi-eyedropper"></i> Laboratorio</a></li>
+                                    <li><a class="dropdown-item d-flex align-items-center gap-1"
+                                            href="{{ route('connectors.compras.index') }}"><i
+                                                class="bi bi-bag-check"></i> Compras</a></li>
+                                    <li><a class="dropdown-item d-flex align-items-center gap-1"
+                                            href="{{ route('connectors.Almacen.index') }}"><i
+                                                class="bi bi-box-seam"></i> Almacen</a></li>
+                                    <li><a class="dropdown-item d-flex align-items-center gap-1"
+                                            href="{{ route('connectors.Ajuste-Modulos.index') }}"><i
+                                                class="bi bi-sliders"></i> Ajuste de Modulos</a></li>
                                 </ul>
                             </li>
                             <!-- Buscador de módulos -->
-                            <form class="d-flex align-items-center ms-2" role="search" id="navbar-search-form" onsubmit="return buscarModulo(event)">
+                            <form class="d-flex align-items-center ms-2" role="search" id="navbar-search-form"
+                                onsubmit="return buscarModulo(event)">
                                 <input class="form-control me-2" type="search" placeholder="Buscar módulo..."
                                     aria-label="Buscar" id="navbar-search-input" />
                                 <button class="btn btn-outline-success d-flex align-items-center gap-1" type="submit">
@@ -88,14 +103,15 @@
                             <!-- Enlaces de inicio de sesión y registro eliminados del navbar -->
                         @else
                             <li class="nav-item dropdown">
-                                <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button"
-                                    data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
-                                    {{ Auth::user()->name }}
+                                <a id="navbarDropdown" class="nav-link dropdown-toggle d-flex align-items-center gap-1"
+                                    href="#" role="button" data-bs-toggle="dropdown" aria-haspopup="true"
+                                    aria-expanded="false" v-pre>
+                                    <i class="bi bi-person-circle"></i> {{ Auth::user()->name }}
                                 </a>
                                 <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
-                                    <a class="dropdown-item" href="{{ route('logout') }}"
+                                    <a class="dropdown-item d-flex align-items-center gap-1" href="{{ route('logout') }}"
                                         onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
-                                        Cerrar Sesion
+                                        <i class="bi bi-box-arrow-right"></i> Cerrar Sesion
                                     </a>
                                     <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
                                         @csrf
@@ -108,6 +124,7 @@
             </div>
         </nav>
         <!-- FIN NAVBAR -->
+        <!-- FIN NAVBAR -->
 
         <main class="py-4">
             @yield('content')
@@ -116,13 +133,13 @@
 
     <!-- Estilos para navbar blureado en modo visitante -->
     @guest
-    <style>
-        .home-navbar-blur {
-            background: #fff !important;
-            z-index: 10;
-            position: relative;
-        }
-    </style>
+        <style>
+            .home-navbar-blur {
+                background: #fff !important;
+                z-index: 10;
+                position: relative;
+            }
+        </style>
     @endguest
 
     <!-- Script buscador de módulos -->
