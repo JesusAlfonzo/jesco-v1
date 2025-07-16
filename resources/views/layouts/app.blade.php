@@ -64,15 +64,11 @@
                                     Modulos
                                 </a>
                                 <ul class="dropdown-menu align-items-center">
+                                    <li><a class="dropdown-item" href="{{ route('connectors.Administrativo.index') }}">Administrativo</a></li>
                                     <li><a class="dropdown-item" href="{{ route('connectors.compras.index') }}">Compras</a></li>
-                                    <li><a class="dropdown-item" href="#">Almacen</a></li>
-                                    <li><a class="dropdown-item" href="#">Productos</a></li>
-                                    <li><a class="dropdown-item" href="#">Empleados</a></li>
-                                    <li><a class="dropdown-item" href="#">Departamentos</a></li>
-                                    <li><a class="dropdown-item" href="#">Laboratorio</a></li>
-                                    <li><a class="dropdown-item" href="#">Pacientes</a></li>
-                                    <li><a class="dropdown-item" href="#">Reportes</a></li>
-                                    <li><a class="dropdown-item" href="{{ route('connectors.catalogo.index') }}">Catalogos</a></li>
+                                    <li><a class="dropdown-item" href="{{ route('connectors.Almacen.index') }}">Almacen</a></li>
+                                    <li><a class="dropdown-item" href="{{ route('connectors.Laboratorio.index') }}">Laboratorio</a></li>
+                                    <li><a class="dropdown-item" href="{{ route('connectors.Ajuste-Modulos.index') }}">Ajuste de Modulos</a></li>
                                 </ul>
                             </li>
                             <!-- Buscador de módulos -->
@@ -135,16 +131,11 @@
             event.preventDefault();
             const valor = document.getElementById('navbar-search-input').value.trim().toLowerCase();
             const rutas = {
-                'empleados': "{{ route('empleados.index') }}",
-                'departamentos': "{{ route('departamentos.index') }}",
-                'monedas': "{{ route('monedas.index') }}",
                 'compras': "{{ route('connectors.compras.index') }}",
                 'almacen': "#",
-                'productos': "#",
+                'administrativo': "#",
                 'laboratorio': "#",
-                'pacientes': "#",
-                'reportes': "#",
-                'catalogo': "{{ route('connectors.catalogo.index') }}"
+                'catalogo': "{{ route('connectors.Ajuste-Modulos.index') }}"
             };
             if (rutas[valor]) {
                 window.location.href = rutas[valor];

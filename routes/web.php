@@ -37,10 +37,22 @@ Route::resource('cotizaciones', CotizacioneController::class)->middleware(['auth
 Route::resource('orden-compras', OrdenCompraController::class)->middleware(['auth', 'role:admin']);
 
 // Paginas Conectoras
-Route::get('/connectors/catalogo', function () {
-    return view('connectors.catalogo.index');
-})->middleware(['auth', 'role:admin'])->name('connectors.catalogo.index');
+Route::get('/connectors/Ajuste-Modulos', function () {
+    return view('connectors.Ajuste-Modulos.index');
+})->middleware(['auth', 'role:admin'])->name('connectors.Ajuste-Modulos.index');
 
 Route::get('/connectors/compras', function () {
     return view('connectors.compras.index');
 })->middleware(['auth', 'role:admin'])->name('connectors.compras.index');
+
+Route::get('/connectors/Administrativo', function () {
+        return view('connectors.Administrativo.index');
+})->middleware(['auth', 'role:admin'])->name('connectors.Administrativo.index');
+
+Route::get('/connectors/Almacen', function () {
+    return view('connectors.Almacen.index');
+})->middleware(['auth', 'role:admin'])->name('connectors.Almacen.index');
+
+Route::get('/connectors/Laboratorio', function () {
+    return view('connectors.Laboratorio.index');
+})->middleware(['auth', 'role:admin'])->name('connectors.Laboratorio.index');
