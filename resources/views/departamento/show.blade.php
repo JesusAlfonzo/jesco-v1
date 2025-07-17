@@ -7,24 +7,37 @@
 @section('content')
     <section class="content container-fluid d-flex justify-content-center align-items-center" style="min-height: 80vh;">
         <div class="row w-100 justify-content-center">
-            <div class="col-md-6">
-                <div class="card">
-                    <div class="card-header" style="display: flex; justify-content: space-between; align-items: center; background: linear-gradient(to right, #4e73df, #224abe); color: white;">
-                        <div class="float-left">
-                            <span class="card-title" style="font-size: 1.25rem;">Mostrar Departamento</span>
-                        </div>
-                        <div class="float-right">
-                            <a class="btn btn-outline-light" href="{{ route('departamentos.index') }}">Volver</a>
-                        </div>
+            <div class="col-md-8 col-lg-7">
+                <div class="card shadow-lg border-0">
+                    <div class="card-header d-flex justify-content-between align-items-center"
+                        style="background: linear-gradient(to right, #4e73df, #224abe); color: white; min-height: 56px;">
+                        <span class="card-title d-flex align-items-center gap-2" style="font-size: 1.25rem;">
+                            <i class="bi bi-diagram-3"></i> Detalles del Departamento
+                        </span>
+                        <a class="btn btn-outline-light btn-sm d-flex align-items-center" href="{{ route('departamentos.index') }}">
+                            <i class="bi bi-arrow-left-circle me-1"></i> Volver
+                        </a>
                     </div>
                     <div class="card-body bg-white">
-                        <div class="form-group mb-2 mb20">
-                            <strong>Nombre:</strong>
-                            {{ $departamento->nombre }}
-                        </div>
-                        <div class="form-group mb-2 mb20">
-                            <strong>Descripción:</strong>
-                            {{ $departamento->descripcion }}
+                        <div class="row g-4">
+                            <div class="col-md-6">
+                                <div class="d-flex align-items-center mb-3">
+                                    <i class="bi bi-diagram-3 fs-4 text-primary me-2"></i>
+                                    <div>
+                                        <div class="fw-bold">Nombre</div>
+                                        <div>{{ $departamento->nombre }}</div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="d-flex align-items-center mb-3">
+                                    <i class="bi bi-card-text fs-4 text-primary me-2"></i>
+                                    <div>
+                                        <div class="fw-bold">Descripción</div>
+                                        <div>{{ $departamento->descripcion }}</div>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>

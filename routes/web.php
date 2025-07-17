@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\AreaController;
 use App\Http\Controllers\DepartamentoController;
 use App\Http\Controllers\OrdenCompraController;
 use App\Http\Controllers\CotizacioneController;
@@ -9,7 +10,11 @@ use App\Http\Controllers\ProveedoreController;
 use App\Http\Controllers\ImpuestoCompraController;
 use App\Http\Controllers\MonedaController;
 use App\Http\Controllers\EmpleadoController;
+use App\Http\Controllers\ExameneController;
 use App\Http\Controllers\HomeController;
+use App\Http\Controllers\MetodoPagoController;
+use App\Http\Controllers\MuestraController;
+use App\Http\Controllers\TasaCambioController;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Auth;
 use Spatie\Permission\Models\Role;
@@ -35,6 +40,14 @@ Route::resource('solicitud-compras', SolicitudCompraController::class)->middlewa
 Route::resource('tipo-impuestos', TipoImpuestoController::class)->middleware(['auth', 'role:admin']);
 Route::resource('cotizaciones', CotizacioneController::class)->middleware(['auth', 'role:admin']);
 Route::resource('orden-compras', OrdenCompraController::class)->middleware(['auth', 'role:admin']);
+Route::resource('areas', AreaController::class)->middleware(['auth', 'role:admin']);
+
+Route::resource('metodo-pagos', MetodoPagoController::class)->middleware(['auth', 'role:admin']);
+Route::resource('tasa-cambios', TasaCambioController::class)->middleware(['auth', 'role:admin']);
+
+Route::resource('examenes', ExameneController::class)->middleware(['auth', 'role:admin']);
+Route::resource('muestras', MuestraController::class)->middleware(['auth', 'role:admin']);
+
 
 // Paginas Conectoras
 Route::get('/connectors/Ajuste-Modulos', function () {

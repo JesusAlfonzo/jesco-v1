@@ -8,12 +8,19 @@
     <div class="container-fluid">
         <!-- Breadcrumbs -->
         <nav aria-label="breadcrumb" class="mb-4">
-            <ol class="breadcrumb" style="margin-left: 1.5rem; margin-right: 1.5rem;">
+            <ol class="breadcrumb bg-white px-3 py-2 shadow-sm rounded align-items-center" style="--bs-breadcrumb-divider: '›'; font-size:1.05rem;">
                 <li class="breadcrumb-item">
-                    <a href="{{ url('/') }}"><i class="fas fa-home"></i> Inicio</a>
+                    <a href="{{ url('/') }}" class="text-decoration-none text-primary">
+                        <i class="bi bi-house-door-fill me-1"></i> Inicio
+                    </a>
                 </li>
-                <li class="breadcrumb-item active" aria-current="page">
-                    <i class="fas fa-users"></i> Departamentos
+                <li class="breadcrumb-item">
+                    <a href="{{ route('connectors.Administrativo.index') }}" class="text-decoration-none text-primary">
+                        <i class="bi bi-collection-fill me-1"></i> Modulo Administrativo
+                    </a>
+                </li>
+                <li class="breadcrumb-item active text-dark" aria-current="page">
+                    <i class="bi bi-diagram-3-fill me-1"></i> Departamentos
                 </li>
             </ol>
         </nav>
@@ -22,11 +29,12 @@
                 <div class="card shadow mb-4">
                     <div class="card-header py-3 d-flex justify-content-between align-items-center"
                         style="background: linear-gradient(to right, #4e73df, #224abe); color: white;">
-                        <h6 class="m-0 font-weight-bold" style="font-size: 1.25rem;">
-                            <i class="fas fa-users me-2"></i>Listado de Departamentos
-                        </h6>
+                        <div class="d-flex align-items-center gap-2">
+                            <i class="bi bi-diagram-3-fill" style="font-size: 2rem;"></i>
+                            <span style="font-size: 1.5rem; font-weight: bold; letter-spacing: 1px; text-shadow: 1px 1px 2px #223a7a33;">Listado de Departamentos</span>
+                        </div>
                         <a href="{{ route('departamentos.create') }}" class="btn btn-outline-light">
-                            <i class="fas fa-plus me-1"></i> Nuevo Departamento
+                            <i class="bi bi-plus-circle me-1"></i> Nuevo Departamento
                         </a>
                     </div>
                     <div class="card-body">
@@ -47,7 +55,7 @@
                                         <input type="text" name="search" class="form-control"
                                             placeholder="Buscar departamentos..." value="{{ request('search') }}">
                                         <button class="btn btn-outline-primary" type="submit">
-                                            <i class="fas fa-search"></i> Buscar
+                                            <i class="bi bi-search"></i> Buscar
                                         </button>
                                     </div>
                                 </form>
@@ -63,9 +71,9 @@
                                 <thead style="background-color: #4e73df; color: white;">
                                     <tr>
                                         <th>#</th>
-                                        <th>Nombre</th>
-                                        <th>Descripción</th>
-                                        <th>Acciones</th>
+                                        <th><i class="bi bi-diagram-3 me-1"></i> Nombre</th>
+                                        <th><i class="bi bi-card-text me-1"></i> Descripción</th>
+                                        <th><i class="bi bi-gear me-1"></i> Acciones</th>
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -75,12 +83,18 @@
                                             <td>{{ $departamento->nombre }}</td>
                                             <td>{{ $departamento->descripcion }}</td>
                                             <td>
-                                                <a href="{{ route('departamentos.show', $departamento->id) }}" class="btn btn-sm btn-primary me-1 mb-1">Ver</a>
-                                                <a href="{{ route('departamentos.edit', $departamento->id) }}" class="btn btn-sm btn-success me-1 mb-1">Editar</a>
+                                                <a href="{{ route('departamentos.show', $departamento->id) }}" class="btn btn-sm btn-primary me-1 mb-1">
+                                                    <i class="bi bi-eye"></i> Ver
+                                                </a>
+                                                <a href="{{ route('departamentos.edit', $departamento->id) }}" class="btn btn-sm btn-success me-1 mb-1">
+                                                    <i class="bi bi-pencil-square"></i> Editar
+                                                </a>
                                                 <form action="{{ route('departamentos.destroy', $departamento->id) }}" method="POST" style="display:inline-block;">
                                                     @csrf
                                                     @method('DELETE')
-                                                    <button type="submit" class="btn btn-sm btn-danger mb-1" onclick="return confirm('¿Está seguro de eliminar este Departamento?')">Eliminar</button>
+                                                    <button type="submit" class="btn btn-sm btn-danger mb-1" onclick="return confirm('¿Está seguro de eliminar este Departamento?')">
+                                                        <i class="bi bi-trash"></i> Eliminar
+                                                    </button>
                                                 </form>
                                             </td>
                                         </tr>

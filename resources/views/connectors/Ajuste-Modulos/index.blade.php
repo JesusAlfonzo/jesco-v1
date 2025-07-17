@@ -24,7 +24,7 @@
             </div>
             <!-- Tarjeta: Métodos de Pago -->
             <div class="col">
-                <a href="#" class="text-decoration-none">
+                <a href="{{ route('metodo-pagos.index') }}" class="text-decoration-none">
                     <div class="card h-100 shadow-sm">
                         <div class="card-body text-center">
                             <i class="bi bi-credit-card text-info mb-2" style="font-size:2.8rem;"></i>
@@ -60,7 +60,7 @@
             </div>
             <!-- Tarjeta: Tasa de Cambios -->
             <div class="col">
-                <a href="#" class="text-decoration-none">
+                <a href="{{ route('tasa-cambios.index') }}" class="text-decoration-none">
                     <div class="card h-100 shadow-sm">
                         <div class="card-body text-center">
                             <i class="bi bi-graph-up-arrow text-primary mb-2" style="font-size:2.8rem;"></i>

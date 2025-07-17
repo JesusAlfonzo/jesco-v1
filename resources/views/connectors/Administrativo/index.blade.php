@@ -37,7 +37,7 @@
             
             <!-- Tarjeta: Areas -->
             <div class="col">
-                <a href="#" class="text-decoration-none">
+                <a href="{{ route('areas.index') }}" class="text-decoration-none">
                     <div class="card h-100 shadow-sm">
                         <div class="card-body text-center">
                             <i class="bi bi-diagram-3 text-danger mb-2" style="font-size:2.8rem;"></i>

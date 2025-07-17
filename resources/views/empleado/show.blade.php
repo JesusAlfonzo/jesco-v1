@@ -7,41 +7,65 @@
 @section('content')
     <section class="content container-fluid d-flex justify-content-center align-items-center" style="min-height: 80vh;">
         <div class="row w-100 justify-content-center">
-            <div class="col-md-6"> <!-- Cambia el ancho aquí (ej: col-md-6 para la mitad) -->
-                <div class="card">
-                    <div class="card-header" style="display: flex; justify-content: space-between; align-items: center; background: linear-gradient(to right, #4e73df, #224abe); color: white;">
-                        <div class="float-left">
-                            <span class="card-title">Mostrar Empleado</span>
-                        </div>
-                        <div class="float-right">
-                            <a class="btn btn-outline-light" href="{{ route('empleados.index') }}"> Volver</a>
-                        </div>
+            <div class="col-md-8 col-lg-7">
+                <div class="card shadow-lg border-0">
+                    <div class="card-header d-flex justify-content-between align-items-center"
+                        style="background: linear-gradient(to right, #4e73df, #224abe); color: white; min-height: 56px;">
+                        <span class="card-title d-flex align-items-center gap-2" style="font-size: 1.25rem;">
+                            <i class="bi bi-person-vcard"></i> Detalles del Empleado
+                        </span>
+                        <a class="btn btn-outline-light btn-sm d-flex align-items-center" href="{{ route('empleados.index') }}">
+                            <i class="bi bi-arrow-left-circle me-1"></i> Volver
+                        </a>
                     </div>
-
                     <div class="card-body bg-white">
-                        <div class="form-group mb-2 mb20">
-                            <strong>Nombre:</strong>
-                            {{ $empleado->nombre }}
-                        </div>
-                        <div class="form-group mb-2 mb20">
-                            <strong>Apellido:</strong>
-                            {{ $empleado->apellido }}
-                        </div>
-                        <div class="form-group mb-2 mb20">
-                            <strong>Departamento Id:</strong>
-                            {{ $empleado->departamento_id }}
-                        </div>
-                        <div class="form-group mb-2 mb20">
-                            <strong>Cargo:</strong>
-                            {{ $empleado->cargo }}
-                        </div>
-                        <div class="form-group mb-2 mb20">
-                            <strong>Estado:</strong>
-                            {{ $empleado->estado }}
-                        </div>
-                        <div class="form-group mb-2 mb20">
-                            <strong>Fecha Ingreso:</strong>
-                            {{ $empleado->fecha_ingreso }}
+                        <div class="row g-4">
+                            <div class="col-md-6">
+                                <div class="d-flex align-items-center mb-3">
+                                    <i class="bi bi-person fs-4 text-primary me-2"></i>
+                                    <div>
+                                        <div class="fw-bold">Nombre</div>
+                                        <div>{{ $empleado->nombre }}</div>
+                                    </div>
+                                </div>
+                                <div class="d-flex align-items-center mb-3">
+                                    <i class="bi bi-person fs-4 text-primary me-2"></i>
+                                    <div>
+                                        <div class="fw-bold">Apellido</div>
+                                        <div>{{ $empleado->apellido }}</div>
+                                    </div>
+                                </div>
+                                <div class="d-flex align-items-center mb-3">
+                                    <i class="bi bi-building fs-4 text-primary me-2"></i>
+                                    <div>
+                                        <div class="fw-bold">Departamento</div>
+                                        <div>{{ $empleado->departamento_id }}</div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="d-flex align-items-center mb-3">
+                                    <i class="bi bi-briefcase fs-4 text-primary me-2"></i>
+                                    <div>
+                                        <div class="fw-bold">Cargo</div>
+                                        <div>{{ $empleado->cargo }}</div>
+                                    </div>
+                                </div>
+                                <div class="d-flex align-items-center mb-3">
+                                    <i class="bi bi-circle-fill fs-4 text-primary me-2"></i>
+                                    <div>
+                                        <div class="fw-bold">Estado</div>
+                                        <div>{{ $empleado->estado }}</div>
+                                    </div>
+                                </div>
+                                <div class="d-flex align-items-center mb-3">
+                                    <i class="bi bi-calendar-date fs-4 text-primary me-2"></i>
+                                    <div>
+                                        <div class="fw-bold">Fecha Ingreso</div>
+                                        <div>{{ $empleado->fecha_ingreso }}</div>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>

@@ -40,9 +40,11 @@
                             <div class="mb-2" style="font-size:0.95rem; color:#555;">
                                 <i class="bi bi-lock-fill me-1 text-secondary"></i>Tu acceso es privado y seguro
                             </div>
-                            <a href="{{ route('login') }}" class="btn btn-primary btn-lg shadow-lg welcome-btn mt-1">
-                                <i class="bi bi-box-arrow-in-right me-1"></i> Iniciar sesión
-                            </a>
+                            <div class="welcome-btn-outer mt-1">
+                                <a href="{{ route('login') }}" class="btn btn-primary btn-lg shadow-lg welcome-btn">
+                                    <i class="bi bi-box-arrow-in-right me-1"></i> Iniciar sesión
+                                </a>
+                            </div>
                         </div>
                         <hr class="my-4">
                         <div class="row text-center g-3">
@@ -61,9 +63,11 @@
                         </div>
                         <div class="mt-4 text-center d-flex justify-content-center align-items-center gap-2" style="gap:0.5rem; margin-top: 2rem;">
                             <span class="badge bg-info text-dark px-3 py-2 shadow-sm">Versión 1.0 • Actualizado {{ date('Y') }}</span>
-                            <a href="https://github.com/JesusAlfonzo/jesco-v1" target="_blank" class="badge bg-dark text-white px-3 py-2 shadow-sm" style="text-decoration:none; display:inline-flex; align-items:center; gap:0.4em;">
-                                <i class="bi bi-github" style="font-size:1.2em;"></i> GitHub
-                            </a>
+                            <div class="welcome-btn-outer" style="display:inline-block;">
+                                <a href="https://github.com/JesusAlfonzo/jesco-v1" target="_blank" class="badge bg-dark text-white px-3 py-2 shadow-sm" style="text-decoration:none; display:inline-flex; align-items:center; gap:0.4em;">
+                                    <i class="bi bi-github" style="font-size:1.2em;"></i> GitHub
+                                </a>
+                            </div>
                         </div>
                     </div>
                 @else
@@ -184,12 +188,21 @@
                 font-weight: 400;
                 line-height: 1.5;
             }
+            .welcome-btn-outer {
+                display: inline-block;
+                transition: transform 0.5s cubic-bezier(0.23, 1, 0.32, 1), box-shadow 0.5s cubic-bezier(0.23, 1, 0.32, 1);
+            }
+            .welcome-btn-outer:hover {
+                transform: scale(1.08) rotate(-1.5deg);
+                box-shadow: 0 8px 32px rgba(0,123,255,0.18);
+            }
             .welcome-btn {
-                transition: all 0.2s;
+                transition: background 0.3s, color 0.3s, box-shadow 0.3s;
             }
             .welcome-btn:hover {
-                transform: scale(1.07);
-                box-shadow: 0 4px 16px rgba(0,123,255,0.18);
+                background: linear-gradient(90deg, #007bff 60%, #0056b3 100%);
+                color: #fff;
+                box-shadow: 0 6px 24px rgba(0,123,255,0.22);
             }
             .feature-icon {
                 transition: all 0.2s;

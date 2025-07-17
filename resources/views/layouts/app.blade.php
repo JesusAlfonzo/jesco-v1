@@ -52,7 +52,7 @@
                 @endif
                 <!-- Contenido del navbar -->
                 <div class="collapse navbar-collapse" id="navbarScroll">
-                    <ul class="navbar-nav me-auto align-items-center navbar-nav-scroll gap-0"
+                    <ul class="navbar-nav mx-auto align-items-center justify-content-center navbar-nav-scroll gap-0"
                         style="--bs-scroll-height: 100px;">
                         <!-- Menú principal para usuarios autenticados -->
                         @if (auth()->user())
@@ -85,16 +85,6 @@
                                                 class="bi bi-sliders"></i> Ajuste de Modulos</a></li>
                                 </ul>
                             </li>
-                            <!-- Buscador de módulos -->
-                            <form class="d-flex align-items-center ms-2" role="search" id="navbar-search-form"
-                                onsubmit="return buscarModulo(event)">
-                                <input class="form-control me-2" type="search" placeholder="Buscar módulo..."
-                                    aria-label="Buscar" id="navbar-search-input" />
-                                <button class="btn btn-outline-success d-flex align-items-center gap-1" type="submit">
-                                    <i class="bi bi-search"></i>
-                                    Buscar
-                                </button>
-                            </form>
                         @endif
                     </ul>
                     <!-- Menú de usuario (login/register o usuario autenticado) -->
@@ -132,36 +122,24 @@
     </div>
 
     <!-- Estilos para navbar blureado en modo visitante -->
-    @guest
-        <style>
-            .home-navbar-blur {
-                background: #fff !important;
-                z-index: 10;
-                position: relative;
-            }
-        </style>
-    @endguest
-
-    <!-- Script buscador de módulos -->
-    <script>
-        function buscarModulo(event) {
-            event.preventDefault();
-            const valor = document.getElementById('navbar-search-input').value.trim().toLowerCase();
-            const rutas = {
-                'compras': "{{ route('connectors.compras.index') }}",
-                'almacen': "#",
-                'administrativo': "#",
-                'laboratorio': "#",
-                'catalogo': "{{ route('connectors.Ajuste-Modulos.index') }}"
-            };
-            if (rutas[valor]) {
-                window.location.href = rutas[valor];
-            } else {
-                alert('No se encontró el módulo "' + valor + '".');
-            }
-            return false;
+    <style>
+        .navbar-nav .nav-link,
+        .navbar-nav .dropdown-item {
+            transition: background 0.2s, color 0.2s;
         }
-    </script>
+        .navbar-nav .nav-link:hover,
+        .navbar-nav .dropdown-item:hover {
+            background: rgba(78, 115, 223, 0.08) !important;
+            color: #224abe !important;
+        }
+        .home-navbar-blur {
+            background: #fff !important;
+            z-index: 10;
+            position: relative;
+        }
+    </style>
+    @guest
+    @endguest
 </body>
 
 </html>

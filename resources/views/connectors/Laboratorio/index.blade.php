@@ -12,7 +12,7 @@
         <div class="row row-cols-1 row-cols-md-3 g-4">
             <!-- Tarjeta: Exámenes -->
             <div class="col">
-                <a href="#" class="text-decoration-none">
+                <a href="{{ route('examenes.index') }}" class="text-decoration-none">
                     <div class="card h-100 shadow-sm">
                         <div class="card-body text-center">
                             <i class="bi bi-journal-medical text-primary mb-2" style="font-size:2.8rem;"></i>
@@ -24,7 +24,7 @@
             </div>
             <!-- Tarjeta: Muestras -->
             <div class="col">
-                <a href="#" class="text-decoration-none">
+                <a href="{{ route('muestras.index') }}" class="text-decoration-none">
                     <div class="card h-100 shadow-sm">
                         <div class="card-body text-center">
                             <i class="bi bi-droplet-half text-success mb-2" style="font-size:2.8rem;"></i>
