@@ -8,10 +8,20 @@
     <div class="container-fluid">
         <!-- Breadcrumbs -->
         <nav aria-label="breadcrumb" class="mb-4">
-            <ol class="breadcrumb">
-                <li class="breadcrumb-item"><a href="{{ url('/') }}"><i class="fas fa-home"></i> Inicio</a></li>
-                <li class="breadcrumb-item"><a href="{{ route('connectors.Laboratorio.index') }}"><i class="fas fa-flask"></i> Laboratorio</a></li>
-                <li class="breadcrumb-item active" aria-current="page"><i class="bi bi-journal-medical"></i> Exámenes</li>
+            <ol class="breadcrumb bg-white px-3 py-2 shadow-sm rounded align-items-center" style="--bs-breadcrumb-divider: '›'; font-size:1.05rem;">
+                <li class="breadcrumb-item">
+                    <a href="{{ url('/') }}" class="text-decoration-none text-primary">
+                        <i class="bi bi-house-door-fill me-1"></i> Inicio
+                    </a>
+                </li>
+                <li class="breadcrumb-item">
+                    <a href="{{ route('connectors.Laboratorio.index') }}" class="text-decoration-none text-primary">
+                        <i class="bi bi-collection-fill me-1"></i> Laboratorio
+                    </a>
+                </li>
+                <li class="breadcrumb-item active text-dark" aria-current="page">
+                    <i class="bi bi-journal-medical me-1"></i> Exámenes
+                </li>
             </ol>
         </nav>
         <div class="row">
@@ -22,8 +32,8 @@
                         <h6 class="m-0 font-weight-bold">
                             <i class="bi bi-journal-medical me-2"></i>Listado de Exámenes
                         </h6>
-                        <a href="{{ route('examenes.create') }}" class="btn btn-outline-light">
-                            <i class="fas fa-plus me-1"></i> Nuevo Examen
+                        <a href="{{ route('examenes.create') }}" class="btn btn-outline-light d-flex align-items-center gap-2">
+                            <i class="bi bi-plus-circle"></i> Nuevo Examen
                         </a>
                     </div>
 
@@ -37,19 +47,27 @@
                     <div class="card-body">
                         <!-- Barra de búsqueda -->
                         <div class="row mb-4">
-                            <div class="col-md-6">
+                            <div class="col-md-8">
                                 <form method="GET" action="{{ route('examenes.index') }}">
                                     <div class="input-group">
                                         <input type="text" name="search" class="form-control"
                                             placeholder="Buscar exámenes..." value="{{ request('search') }}">
-                                        <button class="btn btn-outline-primary" type="submit">
-                                            <i class="fas fa-search">Buscar</i>
+                                        <button class="btn btn-outline-primary d-flex align-items-center gap-1" type="submit">
+                                            <i class="bi bi-search"></i> Buscar
                                         </button>
                                     </div>
                                 </form>
                             </div>
-                            <div class="col-md-6 d-flex justify-content-end">
-                                <!-- Aquí puedes agregar filtros adicionales si lo deseas -->
+                            <div class="col-md-4 d-flex justify-content-end align-items-center gap-2 mt-2 mt-md-0">
+                                <a href="{{ route('tipo-examenes.index') }}" class="btn btn-outline-secondary d-flex align-items-center gap-1">
+                                    <i class="bi bi-list-ul"></i> Tipos de Examen
+                                </a>
+                                <a href="{{ route('tipo-examen-precios.index') }}" class="btn btn-outline-warning d-flex align-items-center gap-1">
+                                    <i class="bi bi-cash-coin"></i> Precios de Examen
+                                </a>
+                                <a href="{{ route('estado-examenes.index') }}" class="btn btn-outline-primary d-flex align-items-center gap-1">
+                                    <i class="bi bi-clipboard2-check"></i> Estados de Examen
+                                </a>
                             </div>
                         </div>
 

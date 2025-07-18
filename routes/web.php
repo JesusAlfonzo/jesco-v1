@@ -10,11 +10,15 @@ use App\Http\Controllers\ProveedoreController;
 use App\Http\Controllers\ImpuestoCompraController;
 use App\Http\Controllers\MonedaController;
 use App\Http\Controllers\EmpleadoController;
+use App\Http\Controllers\EstadoExameneController;
 use App\Http\Controllers\ExameneController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\MetodoPagoController;
 use App\Http\Controllers\MuestraController;
+use App\Http\Controllers\PacienteController;
 use App\Http\Controllers\TasaCambioController;
+use App\Http\Controllers\TipoExameneController;
+use App\Http\Controllers\TipoExamenPrecioController;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Auth;
 use Spatie\Permission\Models\Role;
@@ -47,6 +51,10 @@ Route::resource('tasa-cambios', TasaCambioController::class)->middleware(['auth'
 
 Route::resource('examenes', ExameneController::class)->middleware(['auth', 'role:admin']);
 Route::resource('muestras', MuestraController::class)->middleware(['auth', 'role:admin']);
+Route::resource('estado-examenes', EstadoExameneController::class)->middleware(['auth', 'role:admin']);
+Route::resource('tipo-examenes', TipoExameneController::class)->middleware(['auth', 'role:admin']);
+Route::resource('tipo-examen-precios', TipoExamenPrecioController::class)->middleware(['auth', 'role:admin']);
+Route::resource('pacientes', PacienteController::class)->middleware(['auth', 'role:admin']);
 
 
 // Paginas Conectoras

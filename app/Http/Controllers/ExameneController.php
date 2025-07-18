@@ -1,8 +1,11 @@
 <?php
-
 namespace App\Http\Controllers;
 
 use App\Models\Examene;
+use App\Models\Muestra;
+use App\Models\TipoExamene;
+use App\Models\EstadoExamene;
+use App\Models\User;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use App\Http\Requests\ExameneRequest;
@@ -28,8 +31,12 @@ class ExameneController extends Controller
     public function create(): View
     {
         $examene = new Examene();
+        $muestras = Muestra::all();
+        $tiposExamen = TipoExamene::all();
+        $usuarios = User::all();
+        $estadosExamen = EstadoExamene::all();
 
-        return view('examene.create', compact('examene'));
+        return view('examene.create', compact('examene', 'muestras', 'tiposExamen', 'usuarios', 'estadosExamen'));
     }
 
     /**
@@ -59,8 +66,12 @@ class ExameneController extends Controller
     public function edit($id): View
     {
         $examene = Examene::find($id);
+        $muestras = Muestra::all();
+        $tiposExamen = TipoExamene::all();
+        $usuarios = User::all();
+        $estadosExamen = EstadoExamene::all();
 
-        return view('examene.edit', compact('examene'));
+        return view('examene.edit', compact('examene', 'muestras', 'tiposExamen', 'usuarios', 'estadosExamen'));
     }
 
     /**

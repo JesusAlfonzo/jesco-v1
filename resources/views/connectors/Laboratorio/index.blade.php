@@ -36,7 +36,7 @@
             </div>
             <!-- Tarjeta: Pacientes -->
             <div class="col">
-                <a href="#" class="text-decoration-none">
+                <a href="{{ route('pacientes.index') }}" class="text-decoration-none">
                     <div class="card h-100 shadow-sm">
                         <div class="card-body text-center">
                             <i class="bi bi-person-vcard text-info mb-2" style="font-size:2.8rem;"></i>
